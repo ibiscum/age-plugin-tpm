@@ -6,7 +6,7 @@ require (
 	filippo.io/age v1.2.1-0.20240618131852-7eedd929a6cf
 	github.com/foxboron/swtpm_test v0.0.0-20230713215421-517b6cf0f7cd
 	github.com/google/go-tpm v0.9.1-0.20230629100720-f17b0354fbfc
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.1
 	github.com/twpayne/go-pinentry v0.2.0
 	golang.org/x/crypto v0.24.0
 	golang.org/x/term v0.21.0
