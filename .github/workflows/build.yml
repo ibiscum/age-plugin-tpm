@@ -28,15 +28,22 @@ jobs:
           fetch-depth: 0
       - name: Build binary
         run: |
-          cp LICENSE "$RUNNER_TEMP/LICENSE"
-          echo -e "\n---\n" >> "$RUNNER_TEMP/LICENSE"
-          curl -L "https://go.dev/LICENSE?m=text" >> "$RUNNER_TEMP/LICENSE"
           VERSION="$(git describe --tags)"
           DIR="$(mktemp -d)"
           mkdir "$DIR/age-plugin-tpm"
-          cp "$RUNNER_TEMP/LICENSE" "$DIR/age-plugin-tpm"
           go build -o "$DIR/age-plugin-tpm" -ldflags "-X main.Version=$VERSION" -trimpath ./cmd/...
-          tar -cvzf "age-plugin-tpm-$VERSION-$GOOS-$GOARCH.tar.gz" -C "$DIR" age-plugin-tpm
+
+      # - name: Build binary
+      #   run: |
+      #     cp LICENSE "$RUNNER_TEMP/LICENSE"
+      #     echo -e "\n---\n" >> "$RUNNER_TEMP/LICENSE"
+      #     curl -L "https://go.dev/LICENSE?m=text" >> "$RUNNER_TEMP/LICENSE"
+      #     VERSION="$(git describe --tags)"
+      #     DIR="$(mktemp -d)"
+      #     mkdir "$DIR/age-plugin-tpm"
+      #     cp "$RUNNER_TEMP/LICENSE" "$DIR/age-plugin-tpm"
+      #     go build -o "$DIR/age-plugin-tpm" -ldflags "-X main.Version=$VERSION" -trimpath ./cmd/...
+      #     tar -cvzf "age-plugin-tpm-$VERSION-$GOOS-$GOARCH.tar.gz" -C "$DIR" age-plugin-tpm
         env:
           CGO_ENABLED: 0
           GOOS: ${{ matrix.GOOS }}
