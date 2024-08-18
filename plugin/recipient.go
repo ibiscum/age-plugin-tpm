@@ -3,11 +3,13 @@ package plugin
 import (
 	"bytes"
 	"crypto/ecdh"
+	"crypto/elliptic"
 	"crypto/sha256"
 	"encoding/binary"
 	"fmt"
 	"io"
 	"log"
+	"math/big"
 
 	"filippo.io/age/plugin"
 	"github.com/google/go-tpm/tpm2"
@@ -47,11 +49,11 @@ func NewRecipientFromBytes(s []byte) (*Recipient, error) {
 		return nil, err
 	}
 
-	// ecdhKey, err := ecdh.P256().NewPublicKey(elliptic.Marshal(elliptic.P256(),
-	// 	big.NewInt(0).SetBytes(ecc.X.Buffer),
-	// 	big.NewInt(0).SetBytes(ecc.Y.Buffer),
-	// ))
-	ecdhKey, err := parsed.PubKey.ECDH()
+	ecdhKey, err := ecdh.P256().NewPublicKey(elliptic.Marshal(elliptic.P256(),
+		big.NewInt(0).SetBytes(ecc.X.Buffer),
+		big.NewInt(0).SetBytes(ecc.Y.Buffer),
+	))
+	//ecdhKey, err := parsed.PubKey.ECDH()
 	if err != nil {
 		return nil, err
 	}
