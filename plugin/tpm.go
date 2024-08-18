@@ -2,6 +2,7 @@ package plugin
 
 import (
 	"errors"
+	"log"
 	"os"
 	"os/signal"
 	"path"
@@ -50,7 +51,10 @@ func NewTPMDevice(tpmPath string, isSwtpm bool) (*TPMDevice, error) {
 	if isSwtpm {
 		// We setup the dir in-case it's a tmp thingie
 		if _, err := os.Stat(tpmPath); errors.Is(err, os.ErrNotExist) {
-			os.MkdirTemp(path.Dir(tpmPath), path.Base(tpmPath))
+			_, err := os.MkdirTemp(path.Dir(tpmPath), path.Base(tpmPath))
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 		swtpm = swtpm_test.NewSwtpm(tpmPath)
 		tpmPath, err = swtpm.Socket()
@@ -95,5 +99,8 @@ type handle interface {
 // Helper to flush handles
 func FlushHandle(tpm transport.TPM, h handle) {
 	flushSrk := tpm2.FlushContext{FlushHandle: h}
-	flushSrk.Execute(tpm)
+	_, err := flushSrk.Execute(tpm)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

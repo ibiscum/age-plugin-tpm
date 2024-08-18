@@ -288,7 +288,7 @@ func RunPlugin(cmd *cobra.Command, args []string) error {
 	return nil
 }
 
-func pluginFlags(cmd *cobra.Command, opts *PluginOptions) {
+func pluginFlags(cmd *cobra.Command, _ *PluginOptions) {
 	flags := cmd.Flags()
 	flags.SortFlags = false
 
@@ -308,9 +308,18 @@ func pluginFlags(cmd *cobra.Command, opts *PluginOptions) {
 	flags.BoolVar(&pluginOptions.Decrypt, "decrypt", false, "wip")
 	flags.BoolVar(&pluginOptions.Encrypt, "encrypt", false, "wip")
 	flags.StringVar(&pluginOptions.AgePlugin, "age-plugin", "", "internal use")
-	flags.MarkHidden("decrypt")
-	flags.MarkHidden("encrypt")
-	flags.MarkHidden("age-plugin")
+	err := flags.MarkHidden("decrypt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = flags.MarkHidden("encrypt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = flags.MarkHidden("age-plugin")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {

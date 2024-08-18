@@ -6,6 +6,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"log"
 	"strings"
 	"time"
 
@@ -105,7 +106,10 @@ func ParseIdentity(f io.Reader) (*Identity, error) {
 func EncodeIdentity(i *Identity) string {
 	var b bytes.Buffer
 	for _, v := range i.Serialize() {
-		binary.Write(&b, binary.BigEndian, v)
+		err := binary.Write(&b, binary.BigEndian, v)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	var pub []byte

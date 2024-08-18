@@ -8,6 +8,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"log"
 	"math/big"
 
 	"filippo.io/age/plugin"
@@ -61,7 +62,10 @@ func NewRecipientFromBytes(s []byte) (*Recipient, error) {
 
 func EncodeRecipient(recipient *Recipient) string {
 	var b bytes.Buffer
-	binary.Write(&b, binary.BigEndian, MarshalCompressedEC(recipient.Pubkey))
+	err := binary.Write(&b, binary.BigEndian, MarshalCompressedEC(recipient.Pubkey))
+	if err != nil {
+		log.Fatal(err)
+	}
 	return plugin.EncodeRecipient(PluginName, b.Bytes())
 }
 

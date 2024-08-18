@@ -1,6 +1,6 @@
-module github.com/foxboron/age-plugin-tpm
+module github.com/ibiscum/age-plugin-tpm
 
-go 1.20
+go 1.22.3
 
 require (
 	filippo.io/age v1.2.1-0.20240618131852-7eedd929a6cf
