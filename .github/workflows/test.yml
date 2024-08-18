@@ -13,11 +13,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Install Go ${{ matrix.go }}
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: add stefanberger/swtpm-jammy
