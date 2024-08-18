@@ -28,7 +28,6 @@ jobs:
           fetch-depth: 0
       - name: Build binary
         run: |
-          VERSION="$(git describe --tags)"
           DIR="$(mktemp -d)"
           mkdir "$DIR/age-plugin-tpm"
           go build -o "$DIR/age-plugin-tpm" -ldflags "-X main.Version=$VERSION" -trimpath ./cmd/...
