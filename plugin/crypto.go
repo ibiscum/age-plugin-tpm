@@ -171,6 +171,10 @@ func UnmarshalCompressedEC(b []byte) (*big.Int, *big.Int, *ecdh.PublicKey, error
 
 // Marshal a compressed EC key
 func MarshalCompressedEC(pk *ecdh.PublicKey) []byte {
-	x, y := elliptic.Unmarshal(elliptic.P256(), pk.Bytes())
+	rawKey := pk.Bytes()
+	x := big.NewInt(0).SetBytes(rawKey[1:33])
+	y := big.NewInt(0).SetBytes(rawKey[33:])
+
+	// x, y := elliptic.Unmarshal(elliptic.P256(), pk.Bytes())
 	return elliptic.MarshalCompressed(elliptic.P256(), x, y)
 }

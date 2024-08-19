@@ -56,3 +56,52 @@ func TestEncodeRecipient(t *testing.T) {
 		}
 	}
 }
+
+func TestRecipient_Tag(t *testing.T) {
+	type fields struct {
+		Pubkey *ecdh.PublicKey
+		tag    []byte
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   []byte
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			r := &Recipient{
+				Pubkey: tt.fields.Pubkey,
+				tag:    tt.fields.tag,
+			}
+			if got := r.Tag(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Recipient.Tag() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestRecipient_String(t *testing.T) {
+	type fields struct {
+		Pubkey *ecdh.PublicKey
+		tag    []byte
+	}
+
+	tests := []struct {
+		name   string
+		fields fields
+		want   string
+	}{}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			r := &Recipient{
+				Pubkey: tt.fields.Pubkey,
+				tag:    tt.fields.tag,
+			}
+			if got := r.String(); got != tt.want {
+				t.Errorf("Recipient.String() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

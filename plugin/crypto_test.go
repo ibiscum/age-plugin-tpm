@@ -2,8 +2,11 @@ package plugin
 
 import (
 	"bytes"
+	"crypto/cipher"
+	"crypto/ecdh"
 	"errors"
 	"fmt"
+	"reflect"
 	"testing"
 
 	"github.com/google/go-tpm/tpm2/transport/simulator"
@@ -71,6 +74,34 @@ func TestEncryptionDecryption(t *testing.T) {
 
 			if !bytes.Equal(c.filekey, unwrappedFileKey) {
 				t.Fatalf("filkeys are not the same")
+			}
+		})
+	}
+}
+
+func Test_kdf(t *testing.T) {
+	type args struct {
+		sharedKey *ecdh.PublicKey
+		publicKey *ecdh.PublicKey
+		shared    []byte
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    cipher.AEAD
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := kdf(tt.args.sharedKey, tt.args.publicKey, tt.args.shared)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("kdf() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("kdf() = %v, want %v", got, tt.want)
 			}
 		})
 	}
