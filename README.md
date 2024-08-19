@@ -1,6 +1,8 @@
 TPM plugin for age clients
 ==========================
 
+[![build](https://github.com/ibiscum/age-plugin-tpm/actions/workflows/build.yml/badge.svg)](https://github.com/ibiscum/age-plugin-tpm/actions/workflows/build.yml)
+
 `age-plugin-tpm` is a plugin for [age](https://age-encryption.org/v1) clients
 like [`age`](https://age-encryption.org) and [`rage`](https://str4d.xyz/rage),
 which enables files to be encrypted to age identities sealed by the TPM.
@@ -24,7 +26,7 @@ AGE_TPM_SWTPM=1` to create a identity backed by
 Note that `swtpm` provides no security properties and should only be used for
 testing.
 
-## Installation
+# Installation
 
 The simplest way of installing this plugin is by running the follow go command.
 
@@ -45,7 +47,7 @@ $ age --decrypt -i ./age-identity.txt -o - test-decrypt.txt
 Hack The Planet!
 ```
 
-### With PIN
+## With PIN
 
 ```bash
 # Create identity
