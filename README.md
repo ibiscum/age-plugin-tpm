@@ -7,13 +7,13 @@ TPM plugin for age clients
 like [`age`](https://age-encryption.org) and [`rage`](https://str4d.xyz/rage),
 which enables files to be encrypted to age identities sealed by the TPM.
 
-# Features
+## Features
 
 * Keys created on the TPM, sealed outside of it
 * PIN support
 * TPM session encryption
 
-# Experimental
+## Experimental
 
 The identity format and technical details might change between iterations.
 Consider this plugin experimental.
@@ -26,7 +26,7 @@ AGE_TPM_SWTPM=1` to create a identity backed by
 Note that `swtpm` provides no security properties and should only be used for
 testing.
 
-# Installation
+## Installation
 
 The simplest way of installing this plugin is by running the follow go command.
 
@@ -34,7 +34,7 @@ The simplest way of installing this plugin is by running the follow go command.
 
 Alternatively download the [pre-built binaries](https://github.com/foxboron/age-plugin-tpm/releases).
 
-# Usage
+## Usage
 
 ```bash
 # Create identity
