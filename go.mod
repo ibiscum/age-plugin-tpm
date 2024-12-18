@@ -3,13 +3,13 @@ module github.com/ibiscum/age-plugin-tpm
 go 1.22.3
 
 require (
-	filippo.io/age v1.2.1-0.20240618131852-7eedd929a6cf
+	filippo.io/age v1.2.1
 	github.com/foxboron/swtpm_test v0.0.0-20230713215421-517b6cf0f7cd
 	github.com/google/go-tpm v0.9.1
 	github.com/spf13/cobra v1.8.1
 	github.com/twpayne/go-pinentry v0.3.0
-	golang.org/x/crypto v0.28.0
-	golang.org/x/term v0.25.0
+	golang.org/x/crypto v0.31.0
+	golang.org/x/term v0.27.0
 )
 
 require (
@@ -19,5 +19,5 @@ require (
 	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	golang.org/x/sys v0.26.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 )
