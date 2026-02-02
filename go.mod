@@ -6,7 +6,7 @@ require (
 	filippo.io/age v1.2.1
 	github.com/foxboron/swtpm_test v0.0.0-20230713215421-517b6cf0f7cd
 	github.com/google/go-tpm v0.9.3
-	github.com/spf13/cobra v1.9.1
+	github.com/spf13/cobra v1.10.2
 	github.com/twpayne/go-pinentry v0.3.0
 	golang.org/x/crypto v0.45.0
 	golang.org/x/term v0.37.0
@@ -18,6 +18,6 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/pflag v1.0.9 // indirect
 	golang.org/x/sys v0.38.0 // indirect
 )
