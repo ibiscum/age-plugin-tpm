@@ -8,8 +8,8 @@ require (
 	github.com/google/go-tpm v0.9.3
 	github.com/spf13/cobra v1.9.1
 	github.com/twpayne/go-pinentry v0.3.0
-	golang.org/x/crypto v0.45.0
-	golang.org/x/term v0.37.0
+	golang.org/x/crypto v0.47.0
+	golang.org/x/term v0.39.0
 )
 
 require (
@@ -18,6 +18,6 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
-	golang.org/x/sys v0.38.0 // indirect
+	github.com/spf13/pflag v1.0.6 // indirect
+	golang.org/x/sys v0.40.0 // indirect
 )
