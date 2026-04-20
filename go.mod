@@ -3,9 +3,9 @@ module github.com/ibiscum/age-plugin-tpm
 go 1.24.0
 
 require (
-	filippo.io/age v1.2.1
+	filippo.io/age v1.3.1
 	github.com/foxboron/swtpm_test v0.0.0-20230713215421-517b6cf0f7cd
-	github.com/google/go-tpm v0.9.3
+	github.com/google/go-tpm v0.9.8
 	github.com/spf13/cobra v1.9.1
 	github.com/twpayne/go-pinentry v0.3.0
 	golang.org/x/crypto v0.47.0
@@ -13,6 +13,7 @@ require (
 )
 
 require (
+	filippo.io/hpke v0.4.0 // indirect
 	github.com/google/go-tpm-tools v0.3.13-0.20230620182252-4639ecce2aba // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
